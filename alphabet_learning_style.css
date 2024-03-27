@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    background-image: url("https://e0.pxfuel.com/wallpapers/223/827/desktop-wallpaper-floral-border-and-background-artsy-laptop.jpg");
+    background-size: cover; 
+    background-position: center; 
+}
+.alphabet-container {
+    position: absolute;
+    top: 50%;
+    left: 13%;
+    transform: translateY(-50%);
+}
+canvas {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.controls {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.alpha-container {
+    display: flex;
+    flex-wrap: wrap;
+    left: 15%;
+}
+#result{
+    text-align: center;
+}
+.hidden {
+    display: none;
+}
+.hidden2 {
+    display: none;
+}
+
+.alphabet {
+    width: 200px;
+    height: 200px;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 200px;
+    color: rgb(225, 71, 145); /* Set text color to white */
+    text-shadow: -2px -3px 0 black, 2px -2px 0 black, -1px 1px 0 black, 3px 1px 0 black; /* Create a black outline */
+}
+
+
+
+.nav {
+    width: auto;
+    height: 50px;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transition: opacity .5s;
+    background: linear-gradient(to right, #4568DC, #B06AB3);
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+
+.nav div,
+button,
+input {
+    margin: 5px;
+}
+
+.nav:hover,
+button:hover {
+    cursor: pointer;
+}
+
+.clr {
+    height: 35px;
+    width: 35px;
+    background-color: blue;
+    border-radius: 50%;
+    border: 3px solid white;
+    transition: transform .5s;
+}
+
+.clr:hover {
+    transform: scale(1.2);
+}
+
+.clr:nth-child(1) {
+    background-color: #000;
+}
+
+.clr:nth-child(2) {
+    background-color: red;
+}
+
+.clr:nth-child(3) {
+    background-color: orange;
+}
+
+/* .clr:nth-child(4) {
+    background-color: blue;
+} */
+
+.clr:nth-child(5) {
+    background-color: purple;
+}
+
+.clr:nth-child(6) {
+    background-color: yellowgreen;
+}
+
+.clr:nth-child(7) {
+    background-color: yellow;
+}
+
+.clr:nth-child(8) {
+    border-radius: 0;
+    background-color: #fff;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: .6em 1em;
+    border-radius: 3px;
+    background-color: #03bb56;
+    color: #fff;
+    border: 3px solid white;
+    font-size: 20px;
+    font-weight: bold;
+}
+#checkbtn {
+    background-color: #0f65d4;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+#prev-btn, #next-btn{
+    background-color: #03bb5600;
+    font-size: 50px;
+    border: none;
+}
+
+.save {
+    background-color: #0f65d4;
+}
+
+input[type="color"] {
+    width: 60px;
+    height: 40px;
+}
+
+#ageOutputId {
+    color: white;
+    font-weight: bold;
+    font-size: 15pt;
+}
+
+#ageInputId {
+    background: linear-gradient(to right, #000428 0%, #004e92 100%);
+    height: 7px;
+    outline: none;
+    -webkit-appearance: none;
+    cursor: ew-resize;
+    border-radius: 5px;
+    border: 3px solid white;
+    accent-color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.emoji {
+    font-size: 40px;
+    padding-bottom: 10px;
+}
+
+.emoji-container {
+    position: absolute;
+    top: 500;
+    right: 10%;
+    z-index: 999; /* Ensure it's on top of other elements */
+    display: flex;
+    flex-direction: column;
+}
+
+.smile-emoji {
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+} 
+.controls h1 {
+    text-align: center; /* Center the text horizontally */
+    margin-bottom: 20px; /* Add some space below the heading */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow */
+    color: white;
+    background-color: #03bb56;
+    border-radius: 5px;
+    animation:dance 1s infinite;
+}
+@keyframes dance{
+    0%,
+    100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(20px);
+    }
+}

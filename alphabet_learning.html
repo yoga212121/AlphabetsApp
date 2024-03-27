@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing App 🎨</title>
+    <link rel="stylesheet" href="alphabet_learning_style.css">
+    <script type="text/javascript" src="https://www.chenyuho.com/project/handwritingjs/handwriting.canvas.js"></script>
+    <script src="alphabet_learning_script.js" defer></script>
+</head>
+<body>
+    <body>
+        <div class="container">
+            <div class="emoji-container">
+                <img src=".\images\smiley-face-icegif-3.gif" alt="Smiling Emoji" class="smile-emoji">
+                <button id="checkbtn" onclick="canvas.recognize()">Go🤓</button>
+            </div>
+          <div class="alphabet-container">
+            <div class="alpha-container"><div id="alphabet" class="alphabet"></div></div>
+            <div id="result" class="result"></div> </div>
+            <canvas id="canvas"></canvas>
+          <div class="controls">
+            <h1>LETS PRACTICE ✏️😃</h1>
+            <button id="prev-btn" onclick="canvas.erase()">◀️</button>
+            <button id="try-again-btn" onclick="canvas.erase()">Try Again🤔</button>
+            <button id="next-btn" onclick="canvas.erase()"> ▶️</button>
+          </div>
+        <div class="nav">
+            <div class="clr" data-clr="#000"></div>
+            <div class="clr" data-clr="red"></div>
+            <div class="clr" data-clr="orange"></div>
+            <div class="clr" data-clr="blue"></div>
+            <div class="clr" data-clr="purple"></div>
+            <div class="clr" data-clr="yellowgreen"></div>
+            <div class="clr" data-clr="yellow"></div>
+            <div class="clr" data-clr="#fff"></div>
+            <button class="clear" onclick="canvas.erase()">Clear ❌</button>
+            <button class="save">Save✅</button>
+            <input type="color" id="favcolor" value="#FFFFFF" class="hidden"> 
+            <input type="range" name="ageInputName" id="ageInputId" value="10" min="1" max="20" oninput="ageOutputId.value = ageInputId.value" placeholder="Choose color" class="hidden">
+            <output id="ageOutputId" class="hidden">5</output>
+            <div class="emoji">🎨</div>
+            <button id="listen-btn" onclick="speakAlphabet(currentIndex)">Listen 🔊</button>
+
+        </div>
+    </div>
+</body>
+</html>
