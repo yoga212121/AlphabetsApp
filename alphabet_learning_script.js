@@ -1,3 +1,6 @@
+const happy = new Audio('sounds/yay/levelup.mp3');
+const loseSound = new Audio('sounds/lose/lose2.mp3');
+
 var canvas = new handwriting.Canvas(document.getElementById("canvas"), 3);
 canvas.setCallBack(function (data, err) {
   console.log(data);
@@ -21,9 +24,11 @@ canvas.setCallBack(function (data, err) {
     if (isCorrect === true) {
         document.getElementById("result").innerHTML = "Correct";
         document.querySelector('.smile-emoji').src = "./images/jumpingsmiley.gif";
+        happy.play();
     } else {
         document.getElementById("result").innerHTML = "Incorrect";
         document.querySelector('.smile-emoji').src = "./images/thinkingface.gif";
+        loseSound.play();
     }
 }
 });

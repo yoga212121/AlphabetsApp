@@ -12,6 +12,28 @@ document.getElementById("canvas").addEventListener("mousedown", function () {
     // Enable the check button if there's a drawing on the canvas
     checkBtn.disabled = false;
 });
+const happy1 = new Audio('sounds/yay/clap.mp3');
+const happy2 = new Audio('sounds/yay/yay1.mp3');
+const loseSound = new Audio('sounds/lose/lose2.mp3');
+const redirect = new Audio('sounds/lose/redirect.mp3');
+const victory = new Audio("sounds/yay/victory-dance.mp3");
+let switchhappy = true;
+
+happy1.volume =0.5;
+happy2.volume=0.5;
+loseSound.volume=0.5;
+// Function to play alternating sounds
+function playHappySound() {
+    if (switchhappy) {
+        happy1.play();
+    } else {
+        happy2.play();
+    }
+    // Toggle the flag
+    switchhappy = !switchhappy;
+}
+
+
 
 var canvas = new handwriting.Canvas(document.getElementById("canvas"), 3);
 canvas.setCallBack(function (data, err) {
@@ -31,6 +53,7 @@ canvas.setCallBack(function (data, err) {
             checkBtn.disabled = true;
             document.getElementById("result").innerHTML = "Correct";
             prevScore = score;
+            playHappySound();
             score += 10;
 
             // Automatically go to next alphabet after 3 seconds
@@ -42,11 +65,12 @@ canvas.setCallBack(function (data, err) {
             checkBtn.disabled = true;
             document.getElementById("result").innerHTML = "Incorrect";
             prevScore = score;
+            loseSound.play();
             score -= 10;
 
             setTimeout(function() {
-                document.getElementById("try-again-btn").click();
-            }, 2000);
+                document.getElementById("next-btn").click();
+            }, 3000);
         }
 
         document.getElementById("score").innerHTML = "Score: " + score;
@@ -91,20 +115,44 @@ function setProperties(index) {
 
 function UpdateRating() {
     let value = score;
-    if (value >= 0 && value < 20) {
+    if (value >= 10 && value < 20) {
         setProperties(0);
-    } else if (value >= 20 && value < 40) {
+    } else if (value >= 20 && value < 30) {
         setProperties(1);
-    } else if (value >= 40 && value < 60) {
+    } else if (value >= 30 && value < 60) {
         setProperties(2);
-    } else if (value >= 60 && value < 80) {
+    } else if (value >= 60 && value < 70) {
         setProperties(3);
-    } else if (value >= 80 && value <= 100) {
+    } else if (value >= 70 && value <= 100) {
         setProperties(4);
     }
-    if (score < -10) {
-        window.location.href = "alphabet_learning.html";
+    if(score==80){
+        victory.play();
+        setTimeout(function() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('win-popup').style.display = 'block';
+            document.getElementById('play-again-btn').addEventListener('click', playAgain);
+        }, 2000);
     }
+    if (score == 0) {
+        redirect.play();
+        setTimeout(function() {
+
+            window.location.href = "alphabet_learning.html";
+        },2500);
+    }
+}
+
+function playAgain() {
+    location.reload();
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
 
 
@@ -116,8 +164,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const ctx = canvas.getContext("2d");
     let currentIndex = 0;
     const alphabetDiv = document.getElementById("alphabet");
-    const alphabetArray = Array.from({length: 26}, (_, currentIndex) => String.fromCharCode(65 + currentIndex));
+    let alphabetArray = Array.from({length: 26}, (_, currentIndex) => String.fromCharCode(65 + currentIndex));
     let checkBtn=document.getElementById("checkbtn");
+
+        // Shuffle the alphabet array
+    alphabetArray = shuffleArray(alphabetArray);
+
+        // Slice the array to show only 9 alphabets
+    
+    
 
     function displayAlphabet() {
         alphabetDiv.textContent = alphabetArray[currentIndex];
@@ -217,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Handle navigation between alphabet images
     let prevBtn = document.getElementById("prev-btn");
     let nextBtn = document.getElementById("next-btn");
-    let tryAgainBtn = document.getElementById("try-again-btn");
+    // let tryAgainBtn = document.getElementById("try-again-btn");
 
     prevBtn.addEventListener("click", () => {
         currentIndex = (currentIndex - 1 + alphabetArray.length) % alphabetArray.length;
@@ -231,10 +286,10 @@ document.addEventListener("DOMContentLoaded", function() {
         displayAlphabet(currentIndex)
     });
 
-    tryAgainBtn.addEventListener("click", () => {
-        clearCanvas();
-        displayAlphabet(currentIndex)
-    });
+    // tryAgainBtn.addEventListener("click", () => {
+    //     clearCanvas();
+    //     displayAlphabet(currentIndex)
+    // });
 
     function clearCanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);

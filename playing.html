@@ -12,7 +12,6 @@
 </head>
 <body>
     <body>
-      
         <div class="container">
             <div class="emoji-container">
               <p class="title">EMOJI METER</p>
@@ -29,7 +28,9 @@
             <canvas id="canvas"></canvas>
           <div class="controls">
             <button id="prev-btn" onclick="canvas.erase()">◀️</button>
-            <button id="try-again-btn" onclick="canvas.erase()">Try Again🤔</button>
+            <a href="welcomepage.html"><button>BACK 🏠</button></a>
+            <button onclick="playAgain()">RESTART🚀</button>
+            <!-- <button id="try-again-btn" onclick="canvas.erase()">Try Again🤔</button> -->
             <button id="next-btn" onclick="canvas.erase()"> ▶️</button>
           </div>
         <div class="nav">
@@ -51,5 +52,17 @@
 
         </div>
     </div>
+    <div id="overlay"></div>
+
+<div id="win-popup" class="popup">
+    <div class="popup-content">
+        <h2>You Win!</h2>
+        <img src="images/jumpingsmiley.gif" alt="You Win Image">
+        <button onclick="playAgain()">Play Again</button>
+        <a href="welcomepage.html"><button>Home</button></a>
+    </div>
+</div>
+
+
 </body>
 </html>

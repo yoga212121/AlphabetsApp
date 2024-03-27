@@ -20,7 +20,7 @@ body {
 canvas {
     display: block;
     margin: 0 auto;
-    border: 1px solid black;
+    border: 1px solid rgba(255, 255, 255, 0);
 }
 
 .controls {
@@ -277,4 +277,56 @@ img {
     background-color: gray;
     color: black;
   }
-  
+  #overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    backdrop-filter: blur(5px); /* Blur effect */
+    z-index: 9999; /* Ensure it's above other content */
+}
+
+.popup {
+    width: 400px;
+    height: 400px;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff; /* Background color of pop-up */
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10000; /* Ensure it's above the overlay */
+}
+
+.popup-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup button {
+    padding: 10px;
+    width: 140px; /* Set the desired width */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.a {
+    text-decoration: none;
+    padding: 10px 40px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
