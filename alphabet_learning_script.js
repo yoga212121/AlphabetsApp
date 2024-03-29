@@ -166,13 +166,9 @@ document.addEventListener("DOMContentLoaded", function() {
     
     document.addEventListener("keydown", function(event) {
         if (event.key === "ArrowLeft") {
-            currentIndex = (currentIndex - 1 + alphabetArray.length) % alphabetArray.length;
-            clearCanvas();
-            displayAlphabet(currentIndex);
+            document.getElementById("prev-btn").click();
         } else if (event.key === "ArrowRight") {
-            currentIndex = (currentIndex + 1) % alphabetArray.length;
-            clearCanvas();
-            displayAlphabet(currentIndex);
+            document.getElementById("next-btn").click();
         }
         else if (event.key === 'Enter') {
             clearCanvas();

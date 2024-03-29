@@ -73,7 +73,7 @@ canvas.setCallBack(function (data, err) {
             }, 3000);
         }
 
-        document.getElementById("score").innerHTML = "Score: " + score;
+        document.getElementById("score").innerHTML = "Score: " + (score-30);
         // Call UpdateRating function here
         UpdateRating();
 
@@ -298,15 +298,9 @@ document.addEventListener("DOMContentLoaded", function() {
     
     document.addEventListener("keydown", function(event) {
         if (event.key === "ArrowLeft") {
-            currentIndex = (currentIndex - 1 + alphabetArray.length) % alphabetArray.length;
-            clearCanvas();
-            displayAlphabet(currentIndex);
-            document.getElementById("prevBtn").click();
+            document.getElementById("prev-btn").click();
         } else if (event.key === "ArrowRight") {
-            currentIndex = (currentIndex + 1) % alphabetArray.length;
-            clearCanvas();
-            displayAlphabet(currentIndex);
-            document.getElementById("nextBtn").click();
+            document.getElementById("next-btn").click();
         }
         else if (event.key === 'Enter') {
             clearCanvas();
